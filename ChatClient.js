@@ -2,7 +2,7 @@ import React from 'react';
 import ChatView from './ChatView';
 import { Container, Header,  Title,  Button, Left, Right, Body } from 'native-base';
 import CONST from './Globals';
-
+import Dialogflow from "react-native-dialogflow";
 
 export default class ChatClient extends React.Component {
   constructor(props) {
@@ -24,7 +24,9 @@ export default class ChatClient extends React.Component {
         this.handleMessage(data.name, data.message);
       });
     });*/}
-
+    Dialogflow.setConfiguration(
+          "b1875eb60ba6407ab940a42ac92e341c", Dialogflow.LANG_ENGLISH
+        );
     this.handleSendMessage = this.onSendMessage.bind(this);
   }
 
@@ -64,6 +66,12 @@ export default class ChatClient extends React.Component {
 
     this.handleMessage('Bot', 'Recieved Messages!!', CONST.MSG_TYPE.RESPONSE);
     
+    Dialogflow.requestQuery(text, 
+      result=>{
+        console.log(result)
+      }, error=>{
+        console.log(error)
+      });
 
     {/*fetch(`${pusherConfig.restServer}/users/${this.props.name}/messages`, {
       method: 'POST',

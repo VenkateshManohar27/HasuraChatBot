@@ -48,6 +48,7 @@
 		DD1E605E2B604581BAC1EC8B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 221FA1E6C2F742259166F5FF /* rubicon-icon-font.ttf */; };
 		9AD2316250644249ADCBA6A7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5630B9BEBE746DAAF97E4B0 /* SimpleLineIcons.ttf */; };
 		08990371AD4F494CA5907762 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01D275996CF844609883E1E8 /* Zocial.ttf */; };
+		FC4915F0AC6D421981833E38 /* libRNSpeechToTextIos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DCD11C7C6C40B1BE791430 /* libRNSpeechToTextIos.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -309,6 +310,9 @@
 		221FA1E6C2F742259166F5FF /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		D5630B9BEBE746DAAF97E4B0 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		01D275996CF844609883E1E8 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5A298B43748B4EDEB4BFC828 /* ApiAi.xcodeproj */ = {isa = PBXFileReference; name = "ApiAi.xcodeproj"; path = "../node_modules/react-native-dialogflow/ios/ApiAi.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		45DCD11C7C6C40B1BE791430 /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; name = "libRNSpeechToTextIos.a"; path = "libRNSpeechToTextIos.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B5647F2083B246F2B1C24A7D /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; name = "RNSpeechToTextIos.xcodeproj"; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +341,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				FC4915F0AC6D421981833E38 /* libRNSpeechToTextIos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +519,8 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				5A298B43748B4EDEB4BFC828 /* ApiAi.xcodeproj */,
+				B5647F2083B246F2B1C24A7D /* RNSpeechToTextIos.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1115,6 +1122,15 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasuraChatBot.app/HasuraChatBot";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi",
+					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+				);
 			};
 			name = Debug;
 		};
@@ -1132,6 +1148,15 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasuraChatBot.app/HasuraChatBot";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi",
+					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+				);
 			};
 			name = Release;
 		};
@@ -1150,6 +1175,11 @@
 				);
 				PRODUCT_NAME = HasuraChatBot;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi",
+					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+				);
 			};
 			name = Debug;
 		};
@@ -1167,6 +1197,11 @@
 				);
 				PRODUCT_NAME = HasuraChatBot;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi",
+					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+				);
 			};
 			name = Release;
 		};
@@ -1193,6 +1228,15 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi",
+					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+				);
 			};
 			name = Debug;
 		};
@@ -1219,6 +1263,15 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi",
+					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+				);
 			};
 			name = Release;
 		};
@@ -1240,6 +1293,10 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasuraChatBot-tvOS.app/HasuraChatBot-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Debug;
 		};
@@ -1261,6 +1318,10 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasuraChatBot-tvOS.app/HasuraChatBot-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Release;
 		};
