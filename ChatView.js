@@ -53,7 +53,10 @@ export default class ChatView extends React.Component {
     return (
       <Container>
       <Content>
-      <ScrollView>
+      <ScrollView ref={ref => this.scrollView = ref}
+        onContentSizeChange={(contentWidth, contentHeight)=>{        
+        this.scrollView.scrollToEnd({animated: true});
+        }}>
           
            {Arr}
         

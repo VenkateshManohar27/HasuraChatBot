@@ -28,6 +28,34 @@ export default class ChatClient extends React.Component {
           "b1875eb60ba6407ab940a42ac92e341c", Dialogflow.LANG_ENGLISH
         );
     this.handleSendMessage = this.onSendMessage.bind(this);
+    this.getDialogFlow = this.getDialogFlow.bind(this);
+  }
+
+  async getDialogFlow(msg) {
+    const ACCESS_TOKEN = 'b1875eb60ba6407ab940a42ac92e341c';
+
+    try {
+       const response = await fetch(`https://api.dialogflow.com/v1/query?v=20170712`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8',
+          'Authorization': `Bearer ${ACCESS_TOKEN}`,
+        },
+        body: JSON.stringify({
+          query: msg,
+          lang: 'EN',
+          sessionId: 'somerandomthing'
+        })
+      })
+      let responseJson = await response.json();
+      this.setState({
+        showText: responseJson.result.fulfillment.speech,
+      });
+      return responseJson;
+    } catch(error) {
+      console.error(error);
+    }
   }
 
   handleJoin(name) {
@@ -56,7 +84,7 @@ export default class ChatClient extends React.Component {
 
   
 
-  onSendMessage(text) {
+  async onSendMessage(text) {
     const payload = {
         message: text
     };
@@ -64,15 +92,22 @@ export default class ChatClient extends React.Component {
     this.handleMessage(this.props.name, text, CONST.MSG_TYPE.REQUEST);
 
 
-    this.handleMessage('Bot', 'Recieved Messages!!', CONST.MSG_TYPE.RESPONSE);
     
-    Dialogflow.requestQuery(text, 
+    
+    {/*Dialogflow.requestEvent("https://api.dialogflow.com/V1/",
+    {param1: text},
       result=>{
         console.log(result)
       }, error=>{
         console.log(error)
-      });
+      });*/}
 
+    const dialogflowResponse = await this.getDialogFlow(text);
+      if (this.state.showText) {
+        console.log(dialogflowResponse);
+        this.handleMessage('Bot', dialogflowResponse.result.fulfillment.speech, CONST.MSG_TYPE.RESPONSE);
+        
+      }
     {/*fetch(`${pusherConfig.restServer}/users/${this.props.name}/messages`, {
       method: 'POST',
       headers: {
