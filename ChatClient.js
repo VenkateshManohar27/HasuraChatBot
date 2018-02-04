@@ -10,20 +10,7 @@ export default class ChatClient extends React.Component {
     this.state = {
       messages: []
     };
-   {/* this.pusher = new Pusher(pusherConfig.key, pusherConfig);
-
-    this.chatChannel = this.pusher.subscribe('chat_channel');
-    this.chatChannel.bind('pusher:subscription_succeeded', () => {
-      this.chatChannel.bind('join', (data) => {
-        this.handleJoin(data.name);
-      });
-      this.chatChannel.bind('part', (data) => {
-        this.handlePart(data.name);
-      });
-      this.chatChannel.bind('message', (data) => {
-        this.handleMessage(data.name, data.message);
-      });
-    });*/}
+   
     Dialogflow.setConfiguration(
           "b1875eb60ba6407ab940a42ac92e341c", Dialogflow.LANG_ENGLISH
         );
